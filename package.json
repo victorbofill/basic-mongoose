@@ -1,7 +1,7 @@
 {
-  "name": "PROJECT_NAME",
+  "name": "basic-mongoose",
   "version": "1.0.0",
-  "description": "PROJECT_DESCRIPTION",
+  "description": "Playing around with Mongoose and routes.",
   "main": "index.js",
   "directories": {
     "lib": "lib",

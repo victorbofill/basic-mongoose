@@ -1,4 +1,4 @@
-# Project Name
+# Basic Mongoose
 
 ## Overview
-A brief description of the project
+Playing around with Mongoose and routes.
