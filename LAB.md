@@ -21,6 +21,7 @@ Pick a resource, for example `unicorns`.
       * `server.js`
       * `test/e2e/db.js` 
 3. Create an express app that uses a `lib` folder with a `models` folder and a `routes` folder.
+4. Add test `MONGODB_URI` to `.travis.yml`
 
 ## Requirements
 
