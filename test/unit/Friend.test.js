@@ -38,4 +38,13 @@ describe('Friend model test', () => {
         assert.equal(errors.goingToHeaven.kind, 'required');
         assert.equal(errors.hasJob.kind, 'required');
     });
+
+    it('Class is enumerated', () => {
+        const friend = new Friend({
+            name: 'Sam',
+            class: 'dog',
+        });
+        const errors = getValidationErrors(friend.validateSync());
+        assert.equal(errors['class'].kind, 'enum');
+    });
 });
