@@ -56,5 +56,19 @@ describe('Friend API', () => {
             .then(({ body }) => {
                 assert.deepEqual(body, sam);
             });
+    })
+
+    it('Updates a friend', () => {
+        sam.role = 'Whatever Sam wants.';
+
+        return request .put(`/friends/${sam._id}`)
+            .send(sam)
+            .then(( { body }) => {
+                assert.deepEqual(body, sam);
+                return Friend.findById(sam._id).then(roundTrip);
+            })
+            .then(updated => {
+                assert.deepEqual(updated, sam);
+            });
     });
 });
