@@ -24,4 +24,18 @@ describe('Friend model test', () => {
 
         assert.isUndefined(friend.validateSync());
     });
+
+    const getValidationErrors = validation => {
+        assert.isDefined(validation, 'Expected validation errors and got none');
+        return validation.errors;
+    };
+
+    it('Required fields working', () => {
+        const friend = new Friend({});
+        const errors = getValidationErrors(friend.validateSync());
+        assert.equal(Object.keys(errors).length, 3);
+        assert.equal(errors.name.kind, 'required');
+        assert.equal(errors.goingToHeaven.kind, 'required');
+        assert.equal(errors.hasJob.kind, 'required');
+    });
 });
