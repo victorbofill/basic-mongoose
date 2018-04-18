@@ -87,4 +87,14 @@ describe('Friend API', () => {
                 assert.deepEqual(body, [sam].map(getFields));
             });
     });
+
+    it('Deletes a friend', () => {
+        return request.delete(`/friends/${sam._id}`)
+            .then(() => {
+                return Friend.findById(sam._id);
+            })
+            .then(found => {
+                assert.isNull(found);
+            });
+    });
 });
