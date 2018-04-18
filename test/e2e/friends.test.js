@@ -80,4 +80,11 @@ describe('Friend API', () => {
                 assert.deepEqual(body, [kasey, sam].map(getFields));
             });
     });
+
+    it('Queries friends', () => {
+        return request.get(`/friends?class=warrior`)
+            .then(({ body }) => {
+                assert.deepEqual(body, [sam].map(getFields));
+            });
+    });
 });
