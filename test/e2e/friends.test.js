@@ -97,4 +97,12 @@ describe('Friend API', () => {
                 assert.isNull(found);
             });
     });
+
+    it('Returns 404 on non-existent ID query', () => {
+        return request.get(`/friends/${sam._id}`)
+            .then(response => {
+                assert.equal(response.status, 404);
+                assert.match(response.body.error, /^Friend id/);
+            });
+    });
 });
