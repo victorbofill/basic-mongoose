@@ -44,4 +44,17 @@ describe('Friend API', () => {
                 kasey = body;
             });
     });
+
+    const roundTrip = doc => JSON.parse(JSON.stringify(doc.toJSON()));
+
+    it('Gets a friend by id', () => {
+        return Friend.create(sam).then(roundTrip)
+            .then(saved => {
+                sam = saved;
+                return request.get(`/friends/${sam._id}`);
+            })
+            .then(({ body }) => {
+                assert.deepEqual(body, sam);
+            });
+    });
 });
