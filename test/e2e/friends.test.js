@@ -56,7 +56,7 @@ describe('Friend API', () => {
             .then(({ body }) => {
                 assert.deepEqual(body, sam);
             });
-    })
+    });
 
     it('Updates a friend', () => {
         sam.role = 'Whatever Sam wants.';
@@ -69,6 +69,15 @@ describe('Friend API', () => {
             })
             .then(updated => {
                 assert.deepEqual(updated, sam);
+            });
+    });
+
+    const getFields = ({_id, name, role}) => ({_id, name, role});
+
+    it('Gets all friends by only _id, name, and role', () => {
+        return request.get('/friends')
+            .then(({ body }) => {
+                assert.deepEqual(body, [kasey, sam].map(getFields));
             });
     });
 });
