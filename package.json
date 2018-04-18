@@ -10,11 +10,13 @@
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "mocha": "mocha",
-    "test": "npm run mocha",
-    "test:watch": "npm run mocha -- -w",
-    "start": "node server.js",
-    "start:watch": "nodemon server.js"
+    "test:mocha": "mocha --recursive",
+    "test": "npm run test:mocha",
+    "test:unit": "mocha test/unit",
+    "test:e2e": "mocha test/e2e",
+    "test:watch": "nodemon --exec 'npm run test:mocha'",
+    "test:e2e:watch": "nodemon --exec 'npm run test:e2e'",
+    "test:unit:watch": "nodemon --exec 'npm run test:unit'"
   },
   "repository": {
     "type": "git",
